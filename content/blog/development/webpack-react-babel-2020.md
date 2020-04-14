@@ -2,7 +2,6 @@
 title: Webpack, React and Babel - 2020
 date: 2020-04-14 23:04:87
 category: development
-thumbnail: { thumbnailSrc }
 draft: false
 ---
 
