@@ -1,27 +1,27 @@
 module.exports = {
-  title: `Bee starter`,
-  description: `Blog posted about ...`,
-  author: `[Your Name]`,
+  title: `Self Taught and Fraught`,
+  description: `A blog from a self taught web developer.`,
+  author: `Rick Brown`,
   introduction: `I explain with words and code. I explain with words and code. I explain with words and code.`,
-  siteUrl: `https://gatsby-starter-bee.netlify.com`, // Your blog site url
+  siteUrl: `https://self-taught-and-fraught.com`, // Your blog site url
   social: {
-    twitter: ``, // Your Twitter account
-    github: ``, // Your GitHub account
+    twitter: `@riqeh_`, // Your Twitter account
+    github: `@RickBr0wn`, // Your GitHub account
     medium: ``, // Your Medium account
     facebook: ``, // Your Facebook account
     linkedin: ``, // Your LinkedIn account
   },
   icon: `content/assets/felog.png`, // Add your favicon
-  keywords: [`blog`],
+  keywords: [`blog`, `react`, `dev`],
   comment: {
     disqusShortName: '', // Your disqus-short-name. check disqus.com.
-    utterances: 'JaeYeopHan/gatsby-starter-bee', // Your repository for archive comment
+    utterances: 'RickBr0wn/self-taught-and-fraught', // Your repository for archive comment
   },
   configs: {
     countOfInitialPost: 10, // Config your initial count of post
   },
   sponsor: {
-    buyMeACoffeeId: 'jbee',
+    buyMeACoffeeId: 'RickBrown',
   },
   share: {
     facebookAppId: '', // Add facebookAppId for using facebook share feature v3.2
