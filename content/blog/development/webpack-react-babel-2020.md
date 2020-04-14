@@ -6,6 +6,10 @@ thumbnail: { thumbnailSrc }
 draft: false
 ---
 
+![](./images/webpack-react-babel-2020/aaron-burden-GFpxQ2ZyNc0-unsplash.jpg)
+
+##### Photo by [Aaron Burden](https://unsplash.com/@aaronburden?utm_source=unsplash) on [Unsplash](https://unsplash.com)
+
 ## What you will learn
 
 - Installation and setup of webpack.
