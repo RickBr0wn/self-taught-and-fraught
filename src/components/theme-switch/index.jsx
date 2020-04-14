@@ -4,6 +4,7 @@ import Switch from 'react-switch'
 import * as Dom from '../../utils/dom'
 import { THEME } from '../../constants'
 
+import { IoMdSunny, IoMdMoon } from 'react-icons/io';
 import './index.scss'
 
 function getTheme(checked) {
@@ -50,8 +51,8 @@ export const ThemeSwitch = () => {
           id="normal-switch"
           height={24}
           width={48}
-          checkedIcon={<div className="icon checkedIcon">D</div>}
-          uncheckedIcon={<div className="icon uncheckedIcon">L</div>}
+          checkedIcon={<div className="icon checkedIcon"><IoMdSunny /></div>}
+          uncheckedIcon={<div className="icon uncheckedIcon"><IoMdMoon /></div>}
           offColor={'#d9dfe2'}
           offHandleColor={'#fff'}
           onColor={'#999'}
