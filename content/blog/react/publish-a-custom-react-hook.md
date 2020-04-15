@@ -1,21 +1,37 @@
 ---
-title: publish a react custom hook on npm
+title: publish a custom react hook on npm
 date: 2019-11-27 20:10:16
 category: react
 draft: true
 ---
 
-Before we start, I am assuming you have an account with npm. If not follow [these](<[https://docs.npmjs.com/creating-a-new-npm-user-account](https://docs.npmjs.com/creating-a-new-npm-user-account)>) instructions, before starting this tutorial.
+![](./images/publish-a-react-custom-hook-on-npm/efe-kurnaz-Rs5BQj5zbf8-unsplash.jpg)
 
-Now lets create our custom hook package:
+## What you will learn
 
-`npx create-react-hook`
+- Creating a package and publishing it on [npm](https://www.npmjs.com).
+- Using the [create-react-hook](https://github.com/Hermanya/create-react-hook#readme) library.
+- Using [roll-up](https://rollupjs.org/guide/en/) to bundle our javascript.
+- Installation and setup of [react-hooks-testing-library](https://react-hooks-testing-library.com).
+- Usage of the [npm-publish](https://github.com/danielchatfield/npm-publish#readme) package.
 
-This will start the CLI. To avoid any naming issues, we will prefix the `Package Name` with our npm username, for example, I will call this package: `@rickbrown/use-star-wars-quotes`. This prefix sets the package as [scoped](<[https://docs.npmjs.com/about-scopes](https://docs.npmjs.com/about-scopes)>), something which we will fix later.
+If you don't already have an account with npm follow [these](<[https://docs.npmjs.com/creating-a-new-npm-user-account](https://docs.npmjs.com/creating-a-new-npm-user-account)>) instructions.
+
+Now lets create our custom hook package using the `create-react-hook` CLI with:
+
+```bash
+npx create-react-hook
+```
+
+To avoid any naming issues, we will prefix the `Package Name` with your npm username.
+
+> I will call this package: `@rickbrown/use-star-wars-quotes`.
+
+This prefix sets the package as [scoped](https://docs.npmjs.com/about-scopes), or private, something which we will fix later.
 
 The rest of the CLI, should all be self-explanatory.
 
-The CLI will then run yarn (to install all the required dependencies), set up all the boilerplate code, create an example folder so we can provide a working example of our custom hook & yarn link, so we can test that working example in the example folder.
+The CLI will then run yarn (to install all the required dependencies), set up all the boilerplate code, create an example folder so we can provide a working example of our custom hook & `yarn link`, so we can test that working example in the example folder.
 
 When the CLI has finished we should we open the project in code favorite code editor
 
@@ -25,14 +41,14 @@ code .
 
 Now the boilerplate is quite weighty, but all we need to concern ourselves with is:
 
-- dist - This is where [roll-up](<[https://rollupjs.org/guide/en/](https://rollupjs.org/guide/en/)>) will bundle all of our output.
-- example - This is a stand-alone [create-react-app](<[[https://www.npmjs.com/package/create-react-app](https://www.npmjs.com/package/create-react-app)]>), that we can use to demonstrate and test our hook locally. Its important to realise that it has both its own `package.json`, and `.test.js` file. Note: for the duration of this blog post i will refer to create-react-app as CRA.
-- src - This is the source folder for our custom hook.
+- **dist** - This is where [roll-up](<[https://rollupjs.org/guide/en/](https://rollupjs.org/guide/en/)>) will bundle all of our output.
+- **example** - This is a stand-alone [create-react-app](<[[https://www.npmjs.com/package/create-react-app](https://www.npmjs.com/package/create-react-app)]>), that we can use to demonstrate and test our hook locally. Its important to realise that it has both its own `package.json`, and `.test.js` file. Note: for the duration of this blog post i will refer to create-react-app as CRA.
+- **src** - This is the source folder for our custom hook.
 
 To get this running, we're going to need a console with 2 tabs.
 
-- Tab 1 - navigate to the root folder of the project (i'll be calling that `{root}/` from now on), and type `yarn && yarn start`. You will see roll-up doing it's thing and end up looking something like this: IMAGE#2
-- Tab 2 - navigate to the root folder, and type `cd example && yarn && yarn start`. This will then start the example CRA.
+- **Tab 1** - navigate to the root folder of the project (i'll be calling that `{root}/` from now on), and type `yarn && yarn start`. You will see roll-up doing it's thing and end up looking something like this: IMAGE#2
+- **Tab 2** - navigate to the root folder, and type `cd example && yarn && yarn start`. This will then start the example CRA.
 
 You should now see the default custom hook being displayed at `localhost: 3000`, which in this case should be a counter counting up in seconds.
 
@@ -117,7 +133,11 @@ Now before we start this process, it is important that we start from a clean git
 
 `npm-publish` is a really useful library, and I encourage you to read through the docs. Due to the increasing length of thi blob, I am going to move through it, without explaining. (If you want me to write a blog post about its functionality, let me know).
 
-When your git working directory is clean, simply type `$ npm version major`.
+When your git working directory is clean, simply type:
+
+```bash
+npm version major
+```
 
 As you can see, it now has adjusted the `{root}/package.json` file, to correctly show the version number, and a `$ git tag`, will return the current version number.
 
@@ -156,9 +176,21 @@ Next we need to fix the README.md file. Looking at it, it is currently showing t
 Go to `{root}/use-star-wars-quote/example/src/App.js` and copy the api from their and replace it into the relevant section in your README.md. This is important because when we publish (yes, we really are going to get there), npm will use this README.md on your package details page.
 
 Now back to the command line. In order to publish our custom hook, we need to be logged in to npm, so:
-`$ npm login`
+
+```bash
+npm login
+```
+
 then enter your login details for npm..
 
-and finally.. `$ npm publish`. My completed custom hook can be seen [here](<[https://docs.npmjs.com/creating-a-new-npm-user-account](https://docs.npmjs.com/creating-a-new-npm-user-account)>)
+and finally..
 
-> Written with [StackEdit](https://stackedit.io/).
+```bash
+npm publish
+```
+
+You now have a reusable custom React hook which can be downloaded by anyone. Like all good developers, we do what we can for open source.
+
+I hope you learned something along the way, thanks for reading. Please reach out and contact me if you have any questions about this post, or you if think we can work together.
+
+My completed custom hook can be seen [here](<[https://docs.npmjs.com/creating-a-new-npm-user-account](https://docs.npmjs.com/creating-a-new-npm-user-account)>)
