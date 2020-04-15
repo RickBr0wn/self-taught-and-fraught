@@ -7,7 +7,9 @@ draft: false
 
 ![](./images/webpack-react-babel-2020/aaron-burden-GFpxQ2ZyNc0-unsplash.jpg)
 
-##### Photo by [Aaron Burden](https://unsplash.com/@aaronburden?utm_source=unsplash) on [Unsplash](https://unsplash.com)
+#
+
+Create-React-App is a tremendous product, and really does help ease the new developer into the React framework. But there comes that time in every developers journey to branch out and learn the inner workings of a React project. It's actually easier than you would imagine.
 
 ## What you will learn
 
@@ -433,3 +435,5 @@ Voila! You have a reusable webpack bundled, babel compiled, React project. Like 
 I hope you learned something along the way, thanks for reading. Please reach out and contact me if you have any questions about this post, or you if think we can work together.
 
 The full project can be seen [here](https://github.com/RickBr0wn/webpack-react-babel)
+
+##### 📷[Aaron Burden](https://unsplash.com/@aaronburden?utm_source=unsplash) on [Unsplash](https://unsplash.com)
