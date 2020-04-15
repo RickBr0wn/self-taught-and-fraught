@@ -5,9 +5,9 @@ category: react
 draft: false
 ---
 
-![](./images/publish-a-react-custom-hook-on-npm/efe-kurnaz-Rs5BQj5zbf8-unsplash.jpg)
+![📷](./images/publish-a-react-custom-hook-on-npm/efe-kurnaz-Rs5BQj5zbf8-unsplash.jpg)
 
-##### Photo by [Efe Kurnaz](https://unsplash.com/@efekurnaz?utm_source=unsplash) on [Unsplash](https://unsplash.com)
+<!-- ##### Photo by [Efe Kurnaz](https://unsplash.com/@efekurnaz?utm_source=unsplash) on [Unsplash](https://unsplash.com) -->
 
 ## What you will learn
 
