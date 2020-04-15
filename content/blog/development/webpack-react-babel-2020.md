@@ -1,7 +1,7 @@
 ---
 title: Webpack, React and Babel - 2020
 date: 2020-04-14 23:04:87
-category: development
+category: webpack
 draft: false
 ---
 
@@ -33,7 +33,7 @@ Create a directory for the project:
 mkdir webpack-react-babel-tutorial && cd webpack-react-babel-tutorial
 ```
 
-Initialise the project by using:
+Initialize the project by using:
 
 ```bash
 npm init -y

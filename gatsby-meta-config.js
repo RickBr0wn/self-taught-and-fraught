@@ -5,8 +5,8 @@ module.exports = {
   introduction: `I explain with words and code. I explain with words and code. I explain with words and code.`,
   siteUrl: `https://self-taught-and-fraught.com`, // Your blog site url
   social: {
-    twitter: `@riqeh_`, // Your Twitter account
-    github: `@RickBr0wn`, // Your GitHub account
+    twitter: ``, // Your Twitter account
+    github: `RickBr0wn`, // Your GitHub account
     medium: ``, // Your Medium account
     facebook: ``, // Your Facebook account
     linkedin: ``, // Your LinkedIn account
