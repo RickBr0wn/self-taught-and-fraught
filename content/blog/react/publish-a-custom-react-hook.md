@@ -2,10 +2,12 @@
 title: publish a custom react hook on npm
 date: 2019-11-27 20:10:16
 category: react
-draft: true
+draft: false
 ---
 
 ![](./images/publish-a-react-custom-hook-on-npm/efe-kurnaz-Rs5BQj5zbf8-unsplash.jpg)
+
+##### Photo by [Efe Kurnaz](https://unsplash.com/@efekurnaz?utm_source=unsplash) on [Unsplash](https://unsplash.com)
 
 ## What you will learn
 
@@ -56,16 +58,18 @@ So lets edit that custom hook, grab the one we wrote in a [previous blog post](<
 
 Then in the `{root}/example/src/App.js` file you can test/demonstrate your hooks api. Here is a basic example:
 
-    // example/src/App.js
-    import  React  from  'react';
-    import { useStarWarsQuote } from  '@rickbrown/use-star-wars-quote';
+```js
+// example/src/App.js
+import React from 'react'
+import { useStarWarsQuote } from '@rickbrown/use-star-wars-quote'
 
-    const  App  = () => {
-    	const { quote, loading } =  useStarWarsQuote();
-        return  <div>{loading ? <p>loading..</p> : <p>{quote}</p>}</div>;
-    };
+const App = () => {
+  const { quote, loading } = useStarWarsQuote()
+  return <div>{loading ? <p>loading..</p> : <p>{quote}</p>}</div>
+}
 
-    export default  App;
+export default App
+```
 
 Now it is important that we restart roll-up in `tab 1` so it can re-bundled the new code that we pasted in, and then restart the CRA in `tab 2`, and bingo! We should see a quotation from the star wars films in our browser on `localhost: 3000`. Yes it looks terrible, but this is about the re-useability and publishing of our custom hooks, and not a deep dive in css. So that part is up to you.
 
@@ -94,35 +98,37 @@ This ones easy though. Our test runner, Jest is simply looking for files that en
 
 So lets change our `{root}/src/useStarWarsQuote.test.js` file to read:
 
-    // src/useStarWarsQuote.test.js
-    import { renderHook, cleanup } from  '@testing-library/react-hooks';
-    import { useStarWarsQuote } from  './';
+```js
+// src/useStarWarsQuote.test.js
+import { renderHook, cleanup } from '@testing-library/react-hooks'
+import { useStarWarsQuote } from './'
 
-    afterEach(cleanup);
+afterEach(cleanup)
 
-    describe('useStarWarsQuote', () => {
-        it('should return an object with the keys: quote, loading', () => {
-    	    const { result } =  renderHook(() =>  useStarWarsQuote());
-    	    expect(result.current).toHaveProperty('loading');
-    	    expect(result.current).toHaveProperty('quote');
-    		expect(result.current).not.toBe(undefined);
-    	});
+describe('useStarWarsQuote', () => {
+  it('should return an object with the keys: quote, loading', () => {
+    const { result } = renderHook(() => useStarWarsQuote())
+    expect(result.current).toHaveProperty('loading')
+    expect(result.current).toHaveProperty('quote')
+    expect(result.current).not.toBe(undefined)
+  })
 
-        it('should set loading to true after initial call', () => {
-    	    const { result } =  renderHook(() =>  useStarWarsQuote());
-    	    expect(result.current.loading).toBe(true);
-    	});
+  it('should set loading to true after initial call', () => {
+    const { result } = renderHook(() => useStarWarsQuote())
+    expect(result.current.loading).toBe(true)
+  })
 
-        it('should return a quote and set loading to false', async () => {
-    	    const { result, waitForNextUpdate } =  renderHook(() =>  useStarWarsQuote());
-    	    await  waitForNextUpdate();
+  it('should return a quote and set loading to false', async () => {
+    const { result, waitForNextUpdate } = renderHook(() => useStarWarsQuote())
+    await waitForNextUpdate()
 
-    	    expect(typeof result.current.quote).toBe('string');
-    	    expect(result.current.quote).not.toBe(null);
-    	    expect(result.current.quote).not.toBe('');
-    	    expect(result.current.loading).toBe(false);
-        });
-    });
+    expect(typeof result.current.quote).toBe('string')
+    expect(result.current.quote).not.toBe(null)
+    expect(result.current.quote).not.toBe('')
+    expect(result.current.loading).toBe(false)
+  })
+})
+```
 
 Obvioulsy, if you are using your own custom hook, you'll need to supply tests relevant for your hook. Again, this is about deployment and publishing your custom hook. I will soon point to another blog post on testing cutom hooks, using react-hooks-testing-library. But, for now, back to the point in hand..
 
@@ -143,31 +149,28 @@ As you can see, it now has adjusted the `{root}/package.json` file, to correctly
 
 To facilitate this process a little easier, lets add a `postpublish` script, to our `{root}/package.json` file, which should look like this:
 
-    "scripts": {
-        // ..scripts
-        "postpublish": "git push --tags"
-    },
+```json
+"scripts": {
+    // ..scripts
+    "postpublish": "git push --tags"
+},
+// next change the:
+"peerDependencies": {
+    "react": "16.8.6"
+},
+//to
+"peerDependencies": {
+    "react": ">=16.8.6"
+}
 
-next change the:
-
-    "peerDependencies": {
-        "react": "16.8.6"
-    },
-
-to
-
-    "peerDependencies": {
-    	 "react": ">=16.8.6"
-    }
-
-and after `devDependencies` add `publishConfig`, like so:
-
-    "devDependencies": {
-    	// ...devDependencies
-    },
-    "publishConfig": {
-        "access": "public"
-    }
+// and after `devDependencies` add `publishConfig`, like so:
+"devDependencies": {
+    // ...devDependencies
+},
+"publishConfig": {
+    "access": "public"
+}
+```
 
 The reason for the `publishConfig` is that by default npm packages are set to `public` by default, but `scoped` packages (like we used in this example) are by default `private`.
 
