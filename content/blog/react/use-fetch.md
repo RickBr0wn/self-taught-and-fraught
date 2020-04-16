@@ -9,15 +9,15 @@ draft: false
 
 #
 
-The React hook API means we can reuse our code, more easily than ever before. One of the most frequent things I find when building any modern web app is the ability to fetch data from a remote source, to use within our app. Lets combine both of these, and create a reusable custom React hook that we can use to pull data from any url.
+The React hook API means we can reuse our code, more efficiently than ever before. One of the most common things I find when building any modern web application is the ability to fetch data from a remote source, to use within our app. Let's combine both of these, and create a reusable custom React hook that we can use to pull data from any URL.
 
 ## What you will learn
 
 - Usage of create-react-app via npx
 - Composition of a custom React hook
-- Usage of the useState hook
-- Usage of the useEffect hook
-- Usage of the useRef hook
+- Usage of the `useState` hook
+- Usage of the `useEffect` hook
+- Usage of the `useRef` hook
 - To create a reusable useFetch hook
 
 ## Set up the project
@@ -28,7 +28,7 @@ The fastest way to get any react project up and running is by using the create-r
 npx create-react-app my-custom-hook
 ```
 
-This will bundle a project together, using webpack, react, babel and react-testing library. Pretty much everything we are going to need. If you fancy doing it manually, I have a <a target="_blank" rel="noopener noreferrer" href="https://www.self-taught-and-fraught.com/development/webpack-react-babel-2020/" title="webpack, react and babel, 2020">post</a> that explains that. But for now, create-react-app is perfect for our needs.
+`create-react app` bundles a project together, using webpack, react, babel and react-testing library. Pretty much everything we are going to need. If you fancy doing it manually, I have a <a target="_blank" rel="noopener noreferrer" href="https://www.self-taught-and-fraught.com/development/webpack-react-babel-2020/" title="webpack, react and babel, 2020">post</a> that explains that. But for now, create-react-app is perfect for our needs.
 
 `cd` into the root of the project:
 
@@ -37,7 +37,7 @@ cd my-custom-hook
 code .
 ```
 
-This will open in your favorite IDE, (mine is vscode, but it really doesn't matter which you use), and replace the contents of `./src/App.js` with:
+Will open in your favourite IDE, (mine is vscode, but it doesn't matter which you use), and replace the contents of `./src/App.js` with:
 
 ```js
 // ./src/App.js
@@ -50,7 +50,7 @@ function App() {
 export default App
 ```
 
-At this point its always worth, starting the app and opening your `developer console` and checking that the app runs and without any errors:
+At this point, its always worth, starting the app and opening your `developer console` and checking that the app runs and without any errors:
 
 ```bash
 yarn && yarn start
@@ -58,11 +58,11 @@ yarn && yarn start
 
 ## Considerations
 
-- **response** - Our custom hook wants be a function, that accepts two arguments, although only the first argument is required. The first argument is the `URL` of the remote source, and it should be a `string`. The second argument, if present is the `header` and so should be always an `object`. This header can contain information like setting the `method` to `POST`, `UPDATE`, `DELETE` etc, setting the `body`, supplying `tokens` etc. When the data is return, it should be an `object`.
+- **response** - Our custom hook wants to be a function, that accepts two arguments, although only the first argument is required. The first argument is the `URL` of the remote source, and it should be a `string`. The second argument, if present is the `header` and so should always be an `object`. This header can contain information like setting the `method` to `POST`, `UPDATE`, `DELETE` etc., setting the `body`, supplying `tokens` etc. When the data is return, it should be an `object`.
 
-- **error** - We need to consider what happens if the server is down and there is an error. This should be an error `object`.
+- **error** - We need to consider what happens if the server is down and there is an error. An error `object` should be returned.
 
-- **isLoading** - We should also note that making a request to an external data source such as a `REST_API` is asynchronous, and so we need to be able to handle the `load-state` (whether it is loading or is loaded). Due to its nature it should be a `boolean`.
+- **isLoading** - We should also note that requesting an external data source such as a `REST_API` is asynchronous, and so we need to be able to handle the `load-state` (whether it is loading or is loaded). Due to its nature, it should be a `boolean`.
 
 Just so we are aware of what we are trying to achieve, type the following into our terminal:
 
@@ -70,7 +70,7 @@ Just so we are aware of what we are trying to achieve, type the following into o
 curl 'https://jsonplaceholder.typicode.com/users/5'
 ```
 
-This url is for a `REST_API`, when we make an `http` `GET` request to it, it will return a data object. It is **this** object that we expect our hook to return when we are finished.
+This URL is for a `REST_API` when we make an `HTTP` `GET` request to it, it returns a data object. It is **this** object that we expect our hook to return when we are finished.
 
 ## Create the required API
 
@@ -103,7 +103,7 @@ const App = () => {
 export default App
 ```
 
-Lets discuss this code change.
+Let us discuss this code change.
 
 ```js
 import { useFetch } from ',/useFetch'
@@ -117,11 +117,11 @@ const [response, error, isLoading] = useFetch(
 )
 ```
 
-This is our API. This is how we want our custom hook to work. For this example, I'm only going to use the first argument, and directly enter the `URL` string.
+This code is our API. This pattern is how we want our custom hook to work. For this example, I'm only going to use the first argument and directly enter the `URL` string.
 
 We then want to deconstruct the three considerations that we drew up before `response`, `error` and `isLoaded`.
 
-I am deconstructing these from an `array` rather than an `object`. This means they are not `name bound` so I could use this naming convention:
+I am deconstructing these from an `array` rather than an `object`. Meaning the destructured variables are not `name bound` so I could use this naming convention:
 
 ```js
 const [userData, userError, userLoading] = useFetch(
@@ -129,9 +129,9 @@ const [userData, userError, userLoading] = useFetch(
 )
 ```
 
-> This is important if we want to use the useFetch hook twice in the same component (ie: grab the users location data and then grab the weather data based on that location data). By using it more than once, there would be a naming conflict if we deconstructed from an `object`. (attempting to reassign the constant variable `response`, multiple times with multiple responses). Because of this, the order of this deconstruction is very important. For example, we cannot request just the `[response, isLoaded]` as could be done with object deconstruction, because the information in the `isLoaded` placeholder would actually be the `error` information (the second item in the returned array `[response, error, isLoaded]`).
+> This is important if we want to use the useFetch hook twice in the same component (i.e., grab the users' location data and then grab the weather data based on that location data). By using it more than once, there would be a naming conflict if we deconstructed from an `object`. (attempting to reassign the constant variable `response`, multiple times with multiple responses). Because of this, the order of this deconstruction is critical. For example, we cannot request just the `[response, isLoaded]` as could be done with object deconstruction, because the information in the `isLoaded` placeholder would be the `error` information (the second item in the returned array `[response, error, isLoaded]`).
 
-We can then handle each of our considerations. The `error` conditional allows the us to handle error. The `isLoading` conditional allows the us to handle the case of when the data is still loading, for example on a slower, older mobile device. Use cases for loading states tend to be `progress bars`, or `spinners`.
+We can then handle each of our considerations. The `error` conditional allows us to handle the error. The `isLoading` conditional allows us to handle the case of when the data is still loading, for example, on a slower, older mobile device. Use cases for loading states tend to be `progress bars`, or `spinners`.
 
 Only if there there are no errors **and** the loading has been completed will the we hit our final return statement:
 
@@ -143,11 +143,11 @@ return (
 )
 ```
 
-Because this is a demo, all we are returning is a React.Fragment which will display the `response` object, using two spaces for the tab.
+Because this is a demo, all we are returning is a React.Fragment which displays the `response` object, using two spaces for the tab.
 
-So, obviously now our project won't run. and we haven't even started on the hook! This is fine, we have actually already achieved quite a lot, we know the shape of the API from our three considerations, we also identified handling multiple use cases in the same component.
+So, now our project won't run. And we haven't even started on the hook! It is fine; we have already achieved quite a lot; we know the shape of the API from our three considerations, we also identified handling multiple use cases in the same component.
 
-Lets start with (from the root of the project):
+Let us start with (from the root of the project):
 
 ```bash
 cd src
@@ -171,7 +171,7 @@ const useFetch = (url, options) => {
 export { useFetch }
 ```
 
-Lets see our mock in action, return to the root directory in the terminal and start the application:
+Let's see our mock in action, return to the root directory in the terminal and start the application:
 
 ```bash
 cd ..
@@ -180,21 +180,21 @@ yarn && yarn start
 
 ![](images/use-fetch/mock_response.png)
 
-So the mock works, and we've made really good progress. Now lets make some more considerations:
+So the mock works, and we've made excellent progress. Now let us make some more considerations:
 
-- **useState** - We will utilize the useState hook, to store our three variables in the components state.
+- **useState** - We are going to utilize the useState hook, to store our three variables in the components state.
 
-- **useEffect** - We will want to make use of the useEffect hook, it will allow us to run a function, and define a dependencies array. We can place the two arguments that the initial function call receives (the url and maybe the options) inside this dependency array. That way, the hook will trigger every time it receives a new url. This is essential if we expect to use the hook multiple times in the same component.
+- **useEffect** - We want to make use of the useEffect hook, it allows us to run a function, and define a dependencies array. We can place the two arguments that the initial function call receives (the URL and maybe the options) inside this dependency array. That way, the hook triggers every time it receives a new URL. This API is essential if we expect to use the hook multiple times in the same component.
 
-- **useRef** - useEffect can also return a callback function, if present it does this as the component is being unmounted from the DOM. This callback function can be used for clean up. In our case we can use the useRef hook as a placeholder for the components mounted state. This will allow us to record the mounting and un-mounting of this component, and thus preventing memory leaks.
+- **useRef** - useEffect can also return a callback function.When supplied, it does this as the component is unmounted from the DOM. This callback function is for clean up. In our instance, we can use the `useRef` hook as a placeholder for the components mounted state. Doing this allows us to record the mounting and un-mounting of this component, and thus preventing memory leaks.
 
-- **fetch API** - We will use the fetch method to make an http GET request, passing its response into our components state.
+- **fetch API** - We will use the fetch method to make an HTTP GET request, passing its response into our components state.
 
-- **response** - We will want to create the object to be returned inside the response. As stated before, it must be an object, and we can use it to attach other, helpful information to the response object.
+- **response** - We want to create the object to be returned inside the response. As stated before, it must be an object, and we can use it to attach other, helpful information to the response object.
 
-- **error** - if the fetch API receives an error, it is this error that will be passed into our components state and then returned as an error object.
+- **error** - if the fetch API receives an error, it is this error that is passed into our components state and then returned as an error object.
 
-- **isLoading** - , pass it into the components state, and then return the value as a boolean.
+- **isLoading** - pass it into the components state, and then return the value as a boolean.
 
 Lets edit `./src/useFetch.js` taking all of these new considerations into account:
 
@@ -248,18 +248,165 @@ const useFetch = (url, options) => {
 export { useFetch }
 ```
 
-Lets discuss this code change.
+Let us discuss this code change.
 
-The `useRef` hook will set `ref.current` to true. We'll use this in a moment.
+```js
+const isMounted = React.useRef(true)
+```
 
-We define our three variables as pieces of component state.
+The `useRef` hook will create a `ref` object called `isMounted` and set its `current` property to true (`isMounted.current`). We'll use this in a moment.
 
-Inside the `useEffect` hook, we start with a conditional based on the `ref` we just created. Meaning we can only fetch data whilst it is true. When the callback function is returned from the `useEffect` hook (ie when the component unmounts), we set it to false. It is now not possible to fetch data when the component is un-mounted. This prevents a very common error whilst fetching data, memory leaks.
+```js
+const [response, setResponse] = React.useState({})
+const [error, setError] = React.useState(false)
+const [isLoading, setIsLoading] = React.useState(false)
+```
 
-We then use the fetch API, parse the response, and assign the parsed data to our response object. Non of this is actually necessary, you could just return the parsed data. Personally I like the additional data, and seeing as this is a reusable component, I hope to catch other use cases further down the road.
+We define our three variables as pieces of component state, using the `useState` hook.
+
+```js
+React.useEffect(() => {})
+```
+
+We then declare a `useEffect` hook.
+
+```js
+React.useEffect(() => {
+  if (isMounted.current) {
+    // ..
+  }
+})
+```
+
+Immediately inside of this `useEffect`, we open a conditional based on the `ref` object we just created (`isMounted`). We know it is currently true because we just set it.
+This conditional statement means we can only do anything in this `useEffect` hook while it is true.
+
+```js
+React.useEffect(() => {
+  if (isMounted.current) {
+    // ..
+    return () => {
+      isMounted.current = false
+    }
+  }
+})
+```
+
+We can now return a callback function from the `useEffect` hook (i.e. when the component unmounts). In that callback, we can set `isMounted.current` to false. It is now not possible to fetch data when the component is unmounted. Doing this prevents a common error while fetching data, called memory leaks.
+
+```js
+React.useEffect(() => {
+  if (isMounted.current) {
+    if (!url) {
+      return
+    }
+    // ..
+    return () => {
+      isMounted.current = false
+    }
+  }
+})
+```
+
+Next, we use another conditional, this time checking the URL. If there is no URL, we return, and the hook does nothing. This conditional allows us to use our hook multiple times in the same component By using a ternary operator in the fetch call like this:
+
+```js
+const [weatherData, weatherError, weatherIsLoading] = useFetch(
+  coords.lat && coords.long
+    ? `http://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.long}&APPID=${WEATHER_API_KEY}&units=metric`
+    : null
+)
+
+const [forecastData, forecastError, forecastIsLoading] = useFetch(
+  weatherData.data
+    ? `http://api.openweathermap.org/data/2.5/forecast/daily?id=${weatherData.data.id}&appid=${WEATHER_API_KEY}`
+    : null
+)
+```
+
+I saw in a video from Kent C. Dodds, and its a genuinely versatile pattern.
+
+```js
+React.useEffect(() => {
+  if (isMounted.current) {
+    if (!url) {
+      return
+    }
+    setIsLoading(true)
+    // ..
+    return () => {
+      isMounted.current = false
+    }
+  }
+})
+```
+
+We then set `isLoading` to true.
+
+```js
+React.useEffect(() => {
+  if (isMounted.current) {
+    if (!url) {
+      return
+    }
+    setIsLoading(true)
+    const fetchData = async function () {
+      // ..
+    }
+    fetchData()
+    return () => {
+      isMounted.current = false
+    }
+  }
+})
+```
+
+Because we cannot make the useEffect use an async function itself, we must define an `async` function, and immediately invoke it.
+
+```js
+React.useEffect(() => {
+  if (isMounted.current) {
+    if (!url) {
+      return
+    }
+    setIsLoading(true)
+    const fetchData = async function () {
+      return await fetch(url, options)
+        .then((res) => res.json)
+        .then((jsonData) => {
+          setIsLoading(false)
+          setResponse({
+            'end-point': url,
+            status: 200,
+            error: false,
+            'data-type': Array.isArray(jsonData) ? 'array' : typeof jsonData,
+            'data-length': jsonData.length,
+            data: jsonData,
+          })
+        })
+        .catch((err) => {
+          setIsLoading(false)
+          setError({ error: true, message: err })
+        })
+    }
+    fetchData()
+    return () => {
+      isMounted.current = false
+    }
+  }
+})
+```
+
+We then use the fetch API, parse the response, and assign the parsed data to our response object. None of this is necessary; you could just return the parsed data. I like the additional data, and seeing as this is a reusable component, I hope to catch other use cases further down the road.
+
+And that is it. A fully functional, totally reusable custom React hook. Like all good developers, we push the code to git hub.
 
 The full project can be seen [here](https://github.com/RickBr0wn/use-fetch)
 
 ##### ✏️ [Rick Brown](https://github.com/RickBr0wn)
 
 ##### 📷 [Rob Fuller](https://unsplash.com/@robfuller?utm_source=unsplash&utm_medium=referral)
+
+```
+
+```
