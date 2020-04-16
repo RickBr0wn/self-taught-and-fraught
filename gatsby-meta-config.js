@@ -2,7 +2,7 @@ module.exports = {
   title: `Self Taught and Fraught`,
   description: `A blog from a self taught web developer.`,
   author: `Rick Brown`,
-  introduction: `I am a self-taught React developer currently looking for my first tech job. I use this blog to record what I learn. I have read so many blog post on web development, and I've genuinely learnt a lot from them all. So by doing this, I hope someone else can learn something from me. 🤓`,
+  introduction: `I am a self-taught React developer currently looking for my first tech job. I use this blog to record what I learn. On my long journey in learning web development, I have read so many blog posts on the subject, and I've genuinely learnt a lot from them all. So by doing this, I hope someone else can learn something from me. 🤓`,
   siteUrl: `https://self-taught-and-fraught.com`,
   social: {
     twitter: ``,
