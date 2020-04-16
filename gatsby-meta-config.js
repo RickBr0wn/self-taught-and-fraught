@@ -2,7 +2,7 @@ module.exports = {
   title: `Self Taught and Fraught`,
   description: `A blog from a self taught web developer.`,
   author: `Rick Brown`,
-  introduction: `I explain with words and code. I explain with words and code. I explain with words and code.`,
+  introduction: `I am a self taught React developer currently looking for my first tech job. I use this blog to record what I learn. I hope someone else gets some use out it it too 🤓`,
   siteUrl: `https://self-taught-and-fraught.com`, // Your blog site url
   social: {
     twitter: ``, // Your Twitter account
@@ -26,5 +26,5 @@ module.exports = {
   share: {
     facebookAppId: '', // Add facebookAppId for using facebook share feature v3.2
   },
-  ga: '', // Add your google analytics tranking ID
+  ga: '', // Add your google analytics tracking ID
 }
