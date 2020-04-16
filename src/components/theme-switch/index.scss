@@ -1,5 +1,7 @@
 .switch-container {
-  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
 
   .icon {
     text-align: center;

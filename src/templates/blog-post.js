@@ -43,10 +43,12 @@ export default ({ data, pageContext, location }) => {
       <PostTitle title={postTitle} />
       <PostDate date={date} />
       <PostContainer html={post.html} />
-      <SocialShare title={postTitle} author={author} />
-      {!!sponsor.buyMeACoffeeId && (
-        <SponsorButton sponsorId={sponsor.buyMeACoffeeId} />
-      )}
+      <div style={{ display: 'flex', marginTop: '32px' }}>
+        <SocialShare title={postTitle} author={author} />
+        {!!sponsor.buyMeACoffeeId && (
+          <SponsorButton sponsorId={sponsor.buyMeACoffeeId} />
+        )}
+      </div>
       <Elements.Hr />
       <Bio />
       <PostNavigator pageContext={pageContext} />

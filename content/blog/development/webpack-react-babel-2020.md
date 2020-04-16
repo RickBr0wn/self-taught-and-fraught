@@ -436,6 +436,6 @@ I hope you learned something along the way, thanks for reading. Please reach out
 
 The full project can be seen [here](https://github.com/RickBr0wn/webpack-react-babel)
 
-##### ✏️ [Rick Brown]()
+##### ✏️ [Rick Brown](https://github.com/RickBr0wn)
 
 ##### 📷 [Aaron Burden](https://unsplash.com/@aaronburden?utm_source=unsplash)

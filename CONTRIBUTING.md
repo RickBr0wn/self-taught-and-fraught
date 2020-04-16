@@ -13,7 +13,7 @@ This repository managed based on forked pull request strategy
 ```sh
 # Fort this repository to yours.
 $ git clone [YOUR_REPOSITORY_URL]
-$ cd gatsby-starter-bee
+$ cd self-taught-and-fraught
 
 # Install npm packages and start this project.
 $ npm install
@@ -25,7 +25,7 @@ $ git commit [...]
 $ git push origin [YOUR_REPOSITORY]
 
 # Enroll pull-request!
-# in https://github.com/JaeYeopHan/gatsby-starter-bee
+# in https://github.com/RickBr0wn/self-taught-and-fraught
 ```
 
 ## Commit message rules
@@ -46,4 +46,3 @@ Consider starting the commit message with an applicable emoji:
 ### Thanks!
 
 > I'm waiting for your pull request. :pray:
-
