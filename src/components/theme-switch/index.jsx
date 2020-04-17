@@ -8,7 +8,7 @@ import { IoMdSunny, IoMdMoon } from 'react-icons/io';
 import './index.scss'
 
 function getTheme(checked) {
-  return checked ? THEME.DARK : THEME.LIGHT
+  return checked ? THEME.LIGHT : THEME.DARK
 }
 
 function toggleTheme(theme) {
@@ -27,7 +27,7 @@ function toggleTheme(theme) {
 }
 
 export const ThemeSwitch = () => {
-  const [checked, setChecked] = useState(false)
+  const [checked, setChecked] = useState(true)
 
   const handleChange = checked => {
     const theme = getTheme(checked)
@@ -37,7 +37,7 @@ export const ThemeSwitch = () => {
   }
 
   useEffect(() => {
-    const checked = Dom.hasClassOfBody(THEME.DARK)
+    const checked = Dom.hasClassOfBody(THEME.LIGHT)
 
     handleChange(checked)
   }, [])
@@ -51,12 +51,12 @@ export const ThemeSwitch = () => {
           id="normal-switch"
           height={24}
           width={48}
-          checkedIcon={<div className="icon checkedIcon"><IoMdSunny /></div>}
-          uncheckedIcon={<div className="icon uncheckedIcon"><IoMdMoon /></div>}
-          offColor={'#d9dfe2'}
-          offHandleColor={'#fff'}
-          onColor={'#999'}
-          onHandleColor={'#282c35'}
+          checkedIcon={<div className="icon uncheckedIcon"><IoMdMoon /></div>}
+          uncheckedIcon={<div className="icon checkedIcon"><IoMdSunny /></div>}
+          onColor={'#d9dfe2'}
+          onHandleColor={'#fff'}
+          offColor={'#999'}
+          offHandleColor={'#282c35'}
         />
       </label>
     </div>
