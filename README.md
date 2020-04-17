@@ -6,7 +6,7 @@
 <img alt="Twitter: riQeh_" src="https://img.shields.io/twitter/follow/riQeh_.svg?style=social" target="_blank" />
 </a>
 
-![screenshot](./assets/screenshot.png)
+![screenshot](./content/blog/react/images/use-fetch/selfTaughtMock.png)
 
 ## Contributing
 
