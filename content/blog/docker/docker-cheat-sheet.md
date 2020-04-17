@@ -5,6 +5,8 @@ category: docker
 draft: false
 ---
 
+![](images/docker.jpg)
+
 This is a just list of all of the docker commands that I've found useful whilst learning Docker:
 
 ## Docker Images
@@ -71,3 +73,6 @@ If testing, build and run once (e.g. service_id equals test):
 docker-compose build <service_id>
 docker-compose run --rm <service_id>
 ```
+
+✏️ [Rick Brown](https://github.com/RickBr0wn)
+📷[Tri Eptaroka Mardiana](https://unsplash.com/@inidiana?utm_source=unsplash)
