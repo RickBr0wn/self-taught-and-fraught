@@ -1,5 +1,5 @@
 ---
-title: Docker - cheat sheet
+title: 'Docker: a cheat sheet'
 date: 2020-04-15 02:04:63
 category: docker
 draft: false
